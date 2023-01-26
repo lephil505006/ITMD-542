@@ -1,0 +1,38 @@
+* {
+    text-align: center;
+}
+
+body {
+    background-color: #5CDB95;
+}
+
+#main-navbar {
+    background-color: #05386B;
+    overflow: hidden;
+    border-radius: 25px;
+    padding: 1px;
+    width: 100%;
+}
+
+h1 {
+    font-family: 'Fira Mono', serif;
+    font-size: 250%;
+    padding: 1%;
+    color: #EDF5E1;
+}
+
+h2,
+h3 {
+    font-family: 'Fira Mono', serif;
+    font-size: 250%;
+    padding: 1%;
+    color: #05386B;
+}
+
+.body {
+    font-family: 'Georgia', serif;
+    font-size: 120%;
+    margin-left: 23%;
+    width: 1000px;
+    color: #05386B;
+}
