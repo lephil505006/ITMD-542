@@ -22,9 +22,9 @@ router.post('/add', function (req, res, next) {
     res.render('todos_add', { title: 'Add a Todo', msg: 'Todo text can not be empty!' })
   }
   else {
-    res.send('todo created');
+    //add todo to database 
+    res.redirect('/todos');
   }
-  res.send('todo created');
 });
 
 module.exports = router;
