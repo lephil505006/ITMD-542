@@ -18,7 +18,12 @@ router.get('/add', function (req, res, next) {
 
 /* POST create todo CHANGE LATER */
 router.post('/add', function (req, res, next) {
-  console.log(req.body);
+  if (req.body.todoText.trim() === '') {
+    res.render('todos_add', { title: 'Add a Todo', msg: 'Todo text can not be empty!' })
+  }
+  else {
+    res.send('todo created');
+  }
   res.send('todo created');
 });
 

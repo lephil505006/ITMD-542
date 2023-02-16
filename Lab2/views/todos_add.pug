@@ -4,8 +4,10 @@ block content
   h1= title
   p Use this to add a form
   hr
+  if msg 
+    p(class='redtext')= msg
   form(method='POST', action='/todos/add')
-    input(type='text', name='todoText')
+    input(type='text', name='todoText') 
     | 
     button(type='submit') Create Todo
     | 
