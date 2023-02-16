@@ -11,4 +11,9 @@ router.get('/', function (req, res, next) {
   res.render('todos', { title: 'Lab 2', todos: data });
 });
 
+/* GET create todo form CHANGE LATER */
+router.get('/add', function (req, res, next) {
+  res.render('todos_add', { title: 'Add a Todo' });
+});
+
 module.exports = router;
