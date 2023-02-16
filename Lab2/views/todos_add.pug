@@ -4,3 +4,9 @@ block content
   h1= title
   p Use this to add a form
   hr
+  form(method='POST', action='/todos/add')
+    input(type='text', name='todoText')
+    | 
+    button(type='submit') Create Todo
+    | 
+    a(href='/todos') Cancel

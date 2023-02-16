@@ -16,4 +16,10 @@ router.get('/add', function (req, res, next) {
   res.render('todos_add', { title: 'Add a Todo' });
 });
 
+/* POST create todo CHANGE LATER */
+router.post('/add', function (req, res, next) {
+  console.log(req.body);
+  res.send('todo created');
+});
+
 module.exports = router;
