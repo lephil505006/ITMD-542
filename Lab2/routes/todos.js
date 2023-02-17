@@ -62,7 +62,8 @@ router.post('/:uuid/edit', function (req, res, next) {
     res.render('todos_edit', { title: 'Edit Todo', msg: 'Todo text can not be empty!', todo: todo })
   }
   else {
-    //update db
+    const updatedTodo = { id: req.params.uuid, text: req.body.todoText.trim() };
+    todosRepo.update(updatedTodo);
     res.redirect(`/todos/${req.params.uuid}`);
   }
 });

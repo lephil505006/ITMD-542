@@ -9,12 +9,13 @@ const repo = {
     findById: (uuid) => db.get(uuid),
     create: (todo) => {
         const newTodo = {
-            id: crypto.randomUUID,
+            id: crypto.randomUUID(),
             text: todo.text,
         }
         db.set(newTodo.id, newTodo);
     },
     deleteById: (uuid) => db.delete(uuid),
+    update: (todo) => db.set(todo.id, todo),
 };
 
 module.exports = repo;
