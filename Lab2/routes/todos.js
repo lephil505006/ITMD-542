@@ -49,4 +49,10 @@ router.post('/:uuid/delete', function (req, res, next) {
   res.redirect('/todos');
 });
 
+/* GET edit todo form */
+router.get('/:uuid/edit', function (req, res, next) {
+  const todo = todosRepo.findById(req.params.uuid);
+  res.render('todos_edit', { title: 'Edit Todo', todo: todo });
+});
+
 module.exports = router;
