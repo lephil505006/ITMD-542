@@ -11,7 +11,7 @@ const repo = {
         const newTodo = {
             id: crypto.randomUUID(),
             text: todo.text,
-        }
+        };
         db.set(newTodo.id, newTodo);
     },
     deleteById: (uuid) => db.delete(uuid),
