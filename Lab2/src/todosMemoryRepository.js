@@ -6,6 +6,7 @@ db.set('12e4350f-72d3-4996-90d8-cef6c6340c53', { text: 'This is text 2', id: '12
 
 const repo = {
     findAll: () => Array.from(db.values()),
+    findById: (uuid) => db.get(uuid),
     create: (todo) => {
         const newTodo = {
             id: crypto.randomUUID,
@@ -13,6 +14,7 @@ const repo = {
         }
         db.set(newTodo.id, newTodo);
     },
+    deleteById: (uuid) => db.delete(uuid),
 };
 
 module.exports = repo;

@@ -9,4 +9,5 @@ block content
     #todos-wrapper 
       ul.todos-list 
         each val in todos 
-          li(data-todoid=val.id)= val.text
+          li(data-todoid=val.id)
+            a(href=`/todos/${val.id}`)= val.text

@@ -27,8 +27,26 @@ router.post('/add', function (req, res, next) {
 
 /* GET single todo. */
 router.get('/:uuid', function (req, res, next) {
-  const data = todosRepo.findAll();
+  const todo = todosRepo.findById(req.params.uuid);
+  if (todo) {
+    res.render('todo', { title: 'Your Todo', todo: todo })
+  }
+  else {
+    res.redirect('/todos');
+  }
   res.render('todo', { title: 'Single Todo' });
+});
+
+/* GET delete todo form */
+router.get('/:uuid/delete', function (req, res, next) {
+  const todo = todosRepo.findById(req.params.uuid);
+  res.render('todos_delete', { title: 'Delete Todo', todo: todo });
+});
+
+/* POST delete todo  */
+router.post('/:uuid/delete', function (req, res, next) {
+  todosRepo.deleteById(req.params.uuid);
+  res.redirect('/todos');
 });
 
 module.exports = router;
