@@ -19,7 +19,7 @@ router.post('/add', function (req, res, next) {
     res.render('todos_add', { title: 'Add a Todo', msg: 'Todo text can not be empty!' })
   }
   else {
-    //add todo to database 
+    todosRepo.create({ text: req.body.todoText.trim() });
     res.redirect('/todos');
   }
 });
