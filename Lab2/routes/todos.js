@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
-const todosRepo = require('../src/todosMemoryRepository');
-//const todosRepo = require('../src/todosFileRepository');
+//const todosRepo = require('../src/todosMemoryRepository');
+const todosRepo = require('../src/todosFileRepository');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
