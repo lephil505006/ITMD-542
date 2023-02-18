@@ -26,7 +26,6 @@ const repo = {
         const newTodo = {
             id: crypto.randomUUID(),
             text: todo.text,
-            text: yornis,
         };
         db.set(newTodo.id, newTodo);
         saveData();
