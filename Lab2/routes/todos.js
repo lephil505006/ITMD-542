@@ -16,12 +16,12 @@ router.get('/add', function (req, res, next) {
 
 /* POST create todo CHANGE LATER */
 router.post('/add', function (req, res, next) {
-  if (req.body.todoText.trim() === '') {
+  if (req.body.firstName.trim() === '') {
     res.render('todos_add', { title: 'Add a Todo', msg: 'Todo text can not be empty!' })
   }
   else {
     //Create one for each contact info 1 50 00
-    todosRepo.create({ text: req.body.todoText.trim() });
+    todosRepo.create({ text: req.body.firstName.trim() });
     res.redirect('/todos');
   }
 });
