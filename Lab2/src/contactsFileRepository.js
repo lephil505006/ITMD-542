@@ -19,10 +19,12 @@ const saveData = () => {
 const repo = {
     findAll: () => Array.from(db.values()),
     findById: (uuid) => db.get(uuid),
-    create: (contact) => {
+    create: (contact1, contact2, contact3) => {
         const newContact = {
             id: crypto.randomUUID(),
-            text: contact.text,
+            firstName: contact1.text,
+            lastName: contact2.text,
+            email: contact3.text,
         };
         db.set(newContact.id, newContact);
         saveData();

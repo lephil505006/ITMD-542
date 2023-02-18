@@ -1,6 +1,5 @@
 var express = require('express');
 var router = express.Router();
-//const todosRepo = require('../src/todosMemoryRepository');
 const contactsRepo = require('../src/contactsFileRepository');
 
 /* GET users listing. */
@@ -27,9 +26,7 @@ router.post('/add', function (req, res, next) {
   }
   else {
     //Create one for each contact info 1 50 00
-    contactsRepo.create({ text: req.body.firstName.trim() }, { text: req.body.lastName.trim() });
-    //todosRepo.create({ text: req.body.lastName.trim() });
-    //todosRepo.create({ text: req.body.email.trim() });
+    contactsRepo.create({ text: req.body.firstName.trim() }, { text: req.body.lastName.trim() }, { text: req.body.email.trim() });
     res.redirect('/contacts');
   }
 });

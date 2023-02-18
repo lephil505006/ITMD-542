@@ -10,4 +10,6 @@ block content
       ul.contacts-list 
         each val in contacts 
           li(data-contactsid=val.id)
-            a(href=`/contacts/${val.id}`)= val.text
+            a(href=`/contacts/${val.id}`)= val.firstName
+            p= val.lastName 
+            p= val.email
