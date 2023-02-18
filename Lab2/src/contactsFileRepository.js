@@ -23,7 +23,7 @@ const repo = {
     findAll: () => Array.from(db.values()),
     findById: (uuid) => db.get(uuid),
     create: (firstName, lastName) => {
-        const newTodo = {
+        const newContact = {
             id: crypto.randomUUID(),
             text: firstName.text,
             text: lastName.text,
@@ -35,7 +35,7 @@ const repo = {
         db.delete(uuid);
         saveData();
     },
-    update: (todo) => {
+    update: (contact) => {
         db.set(contact.id, contact);
         saveData();
     },

@@ -5,7 +5,7 @@ const contactsRepo = require('../src/contactsFileRepository');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
-  const data = todosRepo.findAll();
+  const data = contactsRepo.findAll();
   res.render('contacts', { title: 'Contact Database', contacts: data });
 });
 
@@ -49,7 +49,7 @@ router.get('/:uuid', function (req, res, next) {
 /* GET delete todo form */
 router.get('/:uuid/delete', function (req, res, next) {
   const contact = contactsRepo.findById(req.params.uuid);
-  res.render('contacts_delete', { title: 'Delete contacts', todo: todo });
+  res.render('contacts_delete', { title: 'Delete contacts', contact: contact });
 });
 
 /* POST delete todo  */
@@ -68,11 +68,11 @@ router.get('/:uuid/edit', function (req, res, next) {
 router.post('/:uuid/edit', function (req, res, next) {
   if (req.body.contactText.trim() === '') {
     const contact = contactsRepo.findById(req.params.uuid);
-    res.render('todos_edit', { title: 'Edit Todo', msg: 'Todo text can not be empty!', contact: contact })
+    res.render('contacts_edit', { title: 'Edit Todo', msg: 'Todo text can not be empty!', contact: contact })
   }
   else {
     const updatedContact = { id: req.params.uuid, text: req.body.contactText.trim() };
-    todosRepo.update(updatedContact);
+    contactsRepo.update(updatedContact);
     res.redirect(`/contacts/${req.params.uuid}`);
   }
 });

@@ -7,15 +7,15 @@ db.set('12e4350f-72d3-4996-90d8-cef6c6340c53', { text: 'This is text 2', id: '12
 const repo = {
     findAll: () => Array.from(db.values()),
     findById: (uuid) => db.get(uuid),
-    create: (todo) => {
-        const newTodo = {
+    create: (contact) => {
+        const newContact = {
             id: crypto.randomUUID(),
-            text: todo.text,
+            text: contact.text,
         };
-        db.set(newTodo.id, newTodo);
+        db.set(newContact.id, newContact);
     },
     deleteById: (uuid) => db.delete(uuid),
-    update: (todo) => db.set(todo.id, todo),
+    update: (contact) => db.set(contact.id, contact),
 };
 
 module.exports = repo;

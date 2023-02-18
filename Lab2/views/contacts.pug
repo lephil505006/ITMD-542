@@ -6,7 +6,7 @@ block content
   a(href='/contacts/add') Add a Contact
   hr
   if contacts.length > 0
-    #todos-wrapper 
+    #contacts-wrapper 
       ul.contacts-list 
         each val in contacts 
           li(data-contactsid=val.id)
