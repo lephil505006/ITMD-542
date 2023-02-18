@@ -6,7 +6,7 @@ const todosRepo = require('../src/todosFileRepository');
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   const data = todosRepo.findAll();
-  res.render('todos', { title: 'Contact Database', todos: data });
+  res.render('contacts', { title: 'Contact Database', contacts: data });
 });
 
 /* GET create todo form CHANGE LATER */
@@ -30,7 +30,7 @@ router.post('/add', function (req, res, next) {
     todosRepo.create({ text: req.body.firstName.trim() }, { text: req.body.lastName.trim() });
     //todosRepo.create({ text: req.body.lastName.trim() });
     //todosRepo.create({ text: req.body.email.trim() });
-    res.redirect('/todos');
+    res.redirect('/contacts');
   }
 });
 
@@ -41,7 +41,7 @@ router.get('/:uuid', function (req, res, next) {
     res.render('todo', { title: 'Your Todo', todo: todo })
   }
   else {
-    res.redirect('/todos');
+    res.redirect('/contacts');
   }
   res.render('todo', { title: 'Single Todo' });
 });
@@ -55,7 +55,7 @@ router.get('/:uuid/delete', function (req, res, next) {
 /* POST delete todo  */
 router.post('/:uuid/delete', function (req, res, next) {
   todosRepo.deleteById(req.params.uuid);
-  res.redirect('/todos');
+  res.redirect('/contacts');
 });
 
 /* GET edit todo form */
@@ -73,7 +73,7 @@ router.post('/:uuid/edit', function (req, res, next) {
   else {
     const updatedTodo = { id: req.params.uuid, text: req.body.todoText.trim() };
     todosRepo.update(updatedTodo);
-    res.redirect(`/todos/${req.params.uuid}`);
+    res.redirect(`/contacts/${req.params.uuid}`);
   }
 });
 
