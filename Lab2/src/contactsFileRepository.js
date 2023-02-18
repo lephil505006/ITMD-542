@@ -7,16 +7,16 @@ const db = new Map();
 //db.set('12e4350f-72d3-4996-90d8-cef6c6340c53', { text: 'This is text 2', id: '12e4350f-72d3-4996-90d8-cef6c6340c53' });
 
 const loadData = () => {
-    const jsonData = fs.readFileSync(path.join(__dirname, '../data/todos.json'));
-    const todosArray = JSON.parse(jsonData);
-    todosArray.forEach(element => {
+    const jsonData = fs.readFileSync(path.join(__dirname, '../data/contacts.json'));
+    const contactsArray = JSON.parse(jsonData);
+    contactsArray.forEach(element => {
         db.set(element[0], element[1]);
     });
 };
 
 const saveData = () => {
     const stringifyData = JSON.stringify(Array.from(db));
-    fs.writeFileSync(path.join(__dirname, '../data/todos.json'), stringifyData);
+    fs.writeFileSync(path.join(__dirname, '../data/contacts.json'), stringifyData);
 };
 
 const repo = {
@@ -28,7 +28,7 @@ const repo = {
             text: firstName.text,
             text: lastName.text,
         };
-        db.set(newTodo.id, newTodo);
+        db.set(newContact.id, newContact);
         saveData();
     },
     deleteById: (uuid) => {
@@ -36,7 +36,7 @@ const repo = {
         saveData();
     },
     update: (todo) => {
-        db.set(todo.id, todo);
+        db.set(contact.id, contact);
         saveData();
     },
 };

@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 //const todosRepo = require('../src/todosMemoryRepository');
-const todosRepo = require('../src/todosFileRepository');
+const contactsRepo = require('../src/contactsFileRepository');
 
 /* GET users listing. */
 router.get('/', function (req, res, next) {
@@ -11,23 +11,23 @@ router.get('/', function (req, res, next) {
 
 /* GET create todo form CHANGE LATER */
 router.get('/add', function (req, res, next) {
-  res.render('contacts_add', { title: 'Add a Todo' });
+  res.render('contacts_add', { title: 'Add a contacts' });
 });
 
 /* POST create todo CHANGE LATER */
 router.post('/add', function (req, res, next) {
   if (req.body.firstName.trim() === '') {
-    res.render('contacts_add', { title: 'Add a Todo', msg: 'First Name text can not be empty!' })
+    res.render('contacts_add', { title: 'Add a contacts', msg: 'First Name text can not be empty!' })
   }
   else if (req.body.lastName.trim() === '') {
-    res.render('contacts_add', { title: 'Add a Todo', msg: 'Last Name text can not be empty!' })
+    res.render('contacts_add', { title: 'Add a contacts', msg: 'Last Name text can not be empty!' })
   }
   else if (req.body.email.trim() === '') {
-    res.render('contacts_add', { title: 'Add a Todo', msg: 'Email Address text can not be empty!' })
+    res.render('contacts_add', { title: 'Add a contacts', msg: 'Email Address text can not be empty!' })
   }
   else {
     //Create one for each contact info 1 50 00
-    todosRepo.create({ text: req.body.firstName.trim() }, { text: req.body.lastName.trim() });
+    contactsRepo.create({ text: req.body.firstName.trim() }, { text: req.body.lastName.trim() });
     //todosRepo.create({ text: req.body.lastName.trim() });
     //todosRepo.create({ text: req.body.email.trim() });
     res.redirect('/contacts');
@@ -36,43 +36,43 @@ router.post('/add', function (req, res, next) {
 
 /* GET single todo. */
 router.get('/:uuid', function (req, res, next) {
-  const todo = todosRepo.findById(req.params.uuid);
-  if (todo) {
-    res.render('todo', { title: 'Your Todo', todo: todo })
+  const contact = contactsRepo.findById(req.params.uuid);
+  if (contact) {
+    res.render('contact', { title: 'Your Todo', contact: contact })
   }
   else {
     res.redirect('/contacts');
   }
-  res.render('todo', { title: 'Single Todo' });
+  res.render('contact', { title: 'Single Contact' });
 });
 
 /* GET delete todo form */
 router.get('/:uuid/delete', function (req, res, next) {
-  const todo = todosRepo.findById(req.params.uuid);
-  res.render('todos_delete', { title: 'Delete Todo', todo: todo });
+  const contact = contactsRepo.findById(req.params.uuid);
+  res.render('contacts_delete', { title: 'Delete contacts', todo: todo });
 });
 
 /* POST delete todo  */
 router.post('/:uuid/delete', function (req, res, next) {
-  todosRepo.deleteById(req.params.uuid);
+  contactsRepo.deleteById(req.params.uuid);
   res.redirect('/contacts');
 });
 
 /* GET edit todo form */
 router.get('/:uuid/edit', function (req, res, next) {
-  const todo = todosRepo.findById(req.params.uuid);
-  res.render('todos_edit', { title: 'Edit Todo', todo: todo });
+  const contact = contactsRepo.findById(req.params.uuid);
+  res.render('contacts_edit', { title: 'Edit contacts', contact: contact });
 });
 
 /* POST edit todo */
 router.post('/:uuid/edit', function (req, res, next) {
-  if (req.body.todoText.trim() === '') {
-    const todo = todosRepo.findById(req.params.uuid);
-    res.render('todos_edit', { title: 'Edit Todo', msg: 'Todo text can not be empty!', todo: todo })
+  if (req.body.contactText.trim() === '') {
+    const contact = contactsRepo.findById(req.params.uuid);
+    res.render('todos_edit', { title: 'Edit Todo', msg: 'Todo text can not be empty!', contact: contact })
   }
   else {
-    const updatedTodo = { id: req.params.uuid, text: req.body.todoText.trim() };
-    todosRepo.update(updatedTodo);
+    const updatedContact = { id: req.params.uuid, text: req.body.contactText.trim() };
+    todosRepo.update(updatedContact);
     res.redirect(`/contacts/${req.params.uuid}`);
   }
 });

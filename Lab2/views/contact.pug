@@ -1,0 +1,11 @@
+extends layout
+
+block content
+  h1= title
+  p= contact.text
+    .contact-actions
+      a(href='/contacts') Show all Todos 
+      |
+      a(href=`/contacts/${contact.id}/delete`) Delete Todo 
+      |
+      a(href=`/contacts/${contact.id}/edit`) Edit Todo 

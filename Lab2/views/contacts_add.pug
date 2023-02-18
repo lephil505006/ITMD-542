@@ -6,7 +6,7 @@ block content
   hr
   if msg 
     p(class='redtext')= msg
-  form(method='POST', action='/todos/add')
+  form(method='POST', action='/contacts/add')
     label First Name:
       |
       input(type='text' name='firstName')
@@ -22,4 +22,4 @@ block content
     |
     button(type='submit') Create Todo
     | 
-    a(href='/todos') Cancel
+    a(href='/contacts') Cancel
