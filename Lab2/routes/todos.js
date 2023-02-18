@@ -17,11 +17,19 @@ router.get('/add', function (req, res, next) {
 /* POST create todo CHANGE LATER */
 router.post('/add', function (req, res, next) {
   if (req.body.firstName.trim() === '') {
-    res.render('todos_add', { title: 'Add a Todo', msg: 'Todo text can not be empty!' })
+    res.render('todos_add', { title: 'Add a Todo', msg: 'First Name text can not be empty!' })
+  }
+  else if (req.body.lastName.trim() === '') {
+    res.render('todos_add', { title: 'Add a Todo', msg: 'Last Name text can not be empty!' })
+  }
+  else if (req.body.email.trim() === '') {
+    res.render('todos_add', { title: 'Add a Todo', msg: 'Email Address text can not be empty!' })
   }
   else {
     //Create one for each contact info 1 50 00
-    todosRepo.create({ text: req.body.firstName.trim() });
+    todosRepo.create({ text: req.body.firstName.trim() }, { text: req.body.lastName.trim() });
+    //todosRepo.create({ text: req.body.lastName.trim() });
+    //todosRepo.create({ text: req.body.email.trim() });
     res.redirect('/todos');
   }
 });

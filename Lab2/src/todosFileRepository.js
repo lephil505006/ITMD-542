@@ -22,10 +22,11 @@ const saveData = () => {
 const repo = {
     findAll: () => Array.from(db.values()),
     findById: (uuid) => db.get(uuid),
-    create: (todo) => {
+    create: (firstName, lastName) => {
         const newTodo = {
             id: crypto.randomUUID(),
-            text: todo.text,
+            text: firstName.text,
+            text: lastName.text,
         };
         db.set(newTodo.id, newTodo);
         saveData();
