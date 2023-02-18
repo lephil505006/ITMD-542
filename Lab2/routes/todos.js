@@ -6,24 +6,24 @@ const todosRepo = require('../src/todosFileRepository');
 /* GET users listing. */
 router.get('/', function (req, res, next) {
   const data = todosRepo.findAll();
-  res.render('todos', { title: 'Lab 2', todos: data });
+  res.render('todos', { title: 'Contact Database', todos: data });
 });
 
 /* GET create todo form CHANGE LATER */
 router.get('/add', function (req, res, next) {
-  res.render('todos_add', { title: 'Add a Todo' });
+  res.render('contacts_add', { title: 'Add a Todo' });
 });
 
 /* POST create todo CHANGE LATER */
 router.post('/add', function (req, res, next) {
   if (req.body.firstName.trim() === '') {
-    res.render('todos_add', { title: 'Add a Todo', msg: 'First Name text can not be empty!' })
+    res.render('contacts_add', { title: 'Add a Todo', msg: 'First Name text can not be empty!' })
   }
   else if (req.body.lastName.trim() === '') {
-    res.render('todos_add', { title: 'Add a Todo', msg: 'Last Name text can not be empty!' })
+    res.render('contacts_add', { title: 'Add a Todo', msg: 'Last Name text can not be empty!' })
   }
   else if (req.body.email.trim() === '') {
-    res.render('todos_add', { title: 'Add a Todo', msg: 'Email Address text can not be empty!' })
+    res.render('contacts_add', { title: 'Add a Todo', msg: 'Email Address text can not be empty!' })
   }
   else {
     //Create one for each contact info 1 50 00
