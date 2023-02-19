@@ -63,12 +63,12 @@ router.get('/:uuid/edit', function (req, res, next) {
 
 /* POST edit todo */
 router.post('/:uuid/edit', function (req, res, next) {
-  if (req.body.contactText.trim() === '') {
+  if (req.body.contactFirst.trim() === '') {
     const contact = contactsRepo.findById(req.params.uuid);
     res.render('contacts_edit', { title: 'Edit Todo', msg: 'Todo text can not be empty!', contact: contact })
   }
   else {
-    const updatedContact = { id: req.params.uuid, text: req.body.contactText.trim() };
+    const updatedContact = { id: req.params.uuid, firstName: req.body.contactFirst.trim(), lastName: req.body.contactLast.trim(), email: req.body.contactEmail.trim(), };
     contactsRepo.update(updatedContact);
     res.redirect(`/contacts/${req.params.uuid}`);
   }

@@ -7,11 +7,11 @@ block content
   if msg 
     p(class='redtext')= msg
   form(method='POST', action=`/contacts/${contact.id}/edit`)
-    input(type='text', name='contactText', value=contact.firstName) 
+    input(type='text', name='contactFirst', value=contact.firstName) 
     | 
-    input(type='text', name='contactText', value=contact.lastName) 
+    input(type='text', name='contactLast', value=contact.lastName) 
     | 
-    input(type='text', name='contactText', value=contact.email) 
+    input(type='text', name='contactEmail', value=contact.email) 
     | 
     button(type='submit') Save Changes
     | 
