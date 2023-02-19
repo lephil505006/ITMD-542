@@ -1,6 +1,8 @@
 body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: rgb(235, 218, 234);
+
 }
 
 a {
@@ -15,4 +17,13 @@ form {
   display: flex;
   flex-direction: column;
   width: 50%;
+}
+
+li {
+  list-style-type: none;
+  background-color: rgb(207, 125, 115);
+  width: 300px;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 10px;
 }
