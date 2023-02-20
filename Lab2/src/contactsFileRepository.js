@@ -20,8 +20,7 @@ const repo = {
     findAll: () => Array.from(db.values()),
     findById: (uuid) => db.get(uuid),
     create: (contact1, contact2, contact3) => {
-        const date = fs.statSync(path.join(__dirname, '../data/contacts.json'));
-        //var dateModified = date;
+        //(code for time but editing caused errors) const date = fs.statSync(path.join(__dirname, '../data/contacts.json'));
         const newContact = {
             id: crypto.randomUUID(),
             firstName: contact1.text,
