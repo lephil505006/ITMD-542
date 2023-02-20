@@ -21,14 +21,14 @@ const repo = {
     findById: (uuid) => db.get(uuid),
     create: (contact1, contact2, contact3) => {
         const date = fs.statSync(path.join(__dirname, '../data/contacts.json'));
-        var dateModified = date;
+        //var dateModified = date;
         const newContact = {
             id: crypto.randomUUID(),
             firstName: contact1.text,
             lastName: contact2.text,
             email: contact3.text,
         };
-        db.set(newContact.id, newContact, newContact.dateModified);
+        db.set(newContact.id, newContact);
         saveData();
     },
     deleteById: (uuid) => {

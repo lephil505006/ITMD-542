@@ -2,7 +2,8 @@ body {
   padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-color: rgb(235, 218, 234);
-
+  font-family: 'Lexend Mega', sans-serif, 'Times New Roman', Times, serif;
+  font-weight: 750;
 }
 
 a {
@@ -26,4 +27,16 @@ li {
   padding: 10px;
   margin-top: 20px;
   border-radius: 10px;
+}
+
+ul {
+  padding: 0;
+}
+
+a {
+  color: black;
+}
+
+a:link {
+  text-decoration: none;
 }
