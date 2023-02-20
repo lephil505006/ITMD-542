@@ -7,12 +7,18 @@ block content
   if msg 
     p(class='redtext')= msg
   form(method='POST', action=`/contacts/${contact.id}/edit`)
-    input(type='text', name='contactFirst', value=contact.firstName) 
-    | 
-    input(type='text', name='contactLast', value=contact.lastName) 
-    | 
-    input(type='text', name='contactEmail', value=contact.email) 
-    | 
-    button(type='submit') Save Changes
+    label First Name: 
+      |
+      input(type='text', name='contactFirst', class="textbox", value=contact.firstName) 
+    br
+    label Last Name: 
+      |
+      input(type='text', name='contactLast', class="textbox", value=contact.lastName) 
+    br
+    label Email Address: 
+      |
+      input(type='text', name='contactEmail', class="textbox", value=contact.email) 
+    br
+    button(type='submit' class="submit") Save Changes
     | 
     a(href='/contacts') Cancel

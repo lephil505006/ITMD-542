@@ -7,19 +7,19 @@ block content
   if msg 
     p(class='redtext')= msg
   form(method='POST', action='/contacts/add')
-    label First Name:
+    label First Name: 
       |
-      input(type='text' name='firstName')
+      input(type='text' class="textbox" name='firstName')
     br
     label Last Name: 
       |
-      input(type='text' name='lastName') 
+      input(type='text' class="textbox" name='lastName') 
     br
     label Email Address: 
       |
-      input(type='text' name='email') 
+      input(type='text' class="textbox" name='email') 
     br
     |
-    button(type='submit') Create Todo
+    button(type='submit' class="submit") Create Todo
     | 
     a(href='/contacts') Cancel

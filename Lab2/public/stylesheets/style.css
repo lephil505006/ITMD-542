@@ -1,7 +1,6 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: rgb(235, 218, 234);
+  background-color: #E9F8F9;
   font-family: 'Lexend Mega', sans-serif, 'Times New Roman', Times, serif;
   font-weight: 750;
 }
@@ -22,7 +21,7 @@ form {
 
 li {
   list-style-type: none;
-  background-color: rgb(207, 125, 115);
+  background-color: #537FE7;
   width: 300px;
   padding: 10px;
   margin-top: 20px;
@@ -37,6 +36,45 @@ a {
   color: black;
 }
 
+hr {
+  margin-top: 20px;
+}
+
+.edit-actions a {
+  background-color: #181823;
+  border-radius: 20px;
+  padding: 10px;
+  margin-right: 10px;
+  color: #E9F8F9;
+}
+
 a:link {
   text-decoration: none;
+}
+
+.contact-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 80px;
+}
+
+.infoGroup {
+  background-color: #537FE7;
+  height: 100px;
+  width: 300px;
+  padding: 20px;
+  padding-top: 3px;
+  margin-top: 50px;
+  border-radius: 10px;
+}
+
+.submit {
+  background-color: #181823;
+  padding: 10px;
+  border-radius: 10px;
+  font-family: 'Lexend Mega', sans-serif, 'Times New Roman', Times, serif;
+  color: #E9F8F9;
+  width: 200px;
+  font-size: 15px;
+  margin-bottom: 10px;
 }

@@ -6,6 +6,6 @@ block content
   p= contact.text
   hr
   form(method='POST', action=`/contacts/${contact.id}/delete`)
-    button(type='submit') Confirm Delete
+    button(type='submit' class="submit") Confirm Delete
     | 
     a(href=`/contacts/${contact.id}`) Cancel
