@@ -4,3 +4,5 @@ class Contact {
         this.text = text;
     }
 }
+
+module.exports = Contact;

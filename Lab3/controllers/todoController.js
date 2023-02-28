@@ -24,7 +24,8 @@ exports.contacts_create_post = async function (req, res, next) {
         res.render('contacts_add', { title: 'Add a contacts', msg: 'Email Address text can not be empty!' })
     }
     else {
-        contactsRepo.create({ text: req.body.firstName.trim() }, { text: req.body.lastName.trim() }, { text: req.body.email.trim() });
+        const newContact = new TransformStreamDefaultController('', req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim());
+        contactsRepo.create(newContact);
         res.redirect('/contacts');
     }
 };
@@ -66,7 +67,7 @@ exports.contacts_edit_post = function (req, res, next) {
         res.render('contacts_edit', { title: 'Edit Todo', msg: 'Todo text can not be empty!', contact: contact })
     }
     else {
-        const updatedContact = { id: req.params.uuid, firstName: req.body.contactFirst.trim(), lastName: req.body.contactLast.trim(), email: req.body.contactEmail.trim() };
+        const updatedContact = new Contact(req.params.uuid, req.body.contactFirst.trim(), req.body.contactLast.trim(), req.body.contactEmail.trim());
         contactsRepo.update(updatedContact);
         res.redirect(`/contacts/${req.params.uuid}`);
     }
