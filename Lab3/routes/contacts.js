@@ -3,18 +3,18 @@ var router = express.Router();
 const contactsRepo = require('../src/contactsFileRepository');
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
+router.get('/', async function (req, res, next) {
   const data = contactsRepo.findAll();
   res.render('contacts', { title: 'Contact Database', contacts: data });
 });
 
 /* GET create contact form */
-router.get('/add', function (req, res, next) {
+router.get('/add', async function (req, res, next) {
   res.render('contacts_add', { title: 'Add a contacts' });
 });
 
 /* POST create contact form */
-router.post('/add', function (req, res, next) {
+router.post('/add', async function (req, res, next) {
   if (req.body.firstName.trim() === '') {
     res.render('contacts_add', { title: 'Add a contacts', msg: 'First Name text can not be empty!' })
   }
@@ -31,7 +31,7 @@ router.post('/add', function (req, res, next) {
 });
 
 /* GET single contact form */
-router.get('/:uuid', function (req, res, next) {
+router.get('/:uuid', async function (req, res, next) {
   const contact = contactsRepo.findById(req.params.uuid);
   if (contact) {
     res.render('contact', { title: 'Your Todo', contact: contact })
@@ -43,7 +43,7 @@ router.get('/:uuid', function (req, res, next) {
 });
 
 /* GET delete contact form */
-router.get('/:uuid/delete', function (req, res, next) {
+router.get('/:uuid/delete', async function (req, res, next) {
   const contact = contactsRepo.findById(req.params.uuid);
   res.render('contacts_delete', { title: 'Delete contacts', contact: contact });
 });
