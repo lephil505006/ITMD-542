@@ -1,4 +1,4 @@
-const contactsRepo = require('../src/contactsFileRepository');
+const contactsRepo = require('../src/contactsSQLiteRepository');
 const Contact = require('../src/Contact');
 
 /* GET users listing. */
