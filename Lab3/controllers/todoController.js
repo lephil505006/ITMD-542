@@ -1,4 +1,5 @@
 const contactsRepo = require('../src/contactsFileRepository');
+const Contact = require('../src/Contact');
 
 /* GET users listing. */
 exports.contacts_list = async function (req, res, next) {
