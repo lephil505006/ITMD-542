@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= title
+  p Use this to add a form
+  hr
+  if msg 
+    p(class='redtext')= msg
+  form(method='POST', action='/contacts/add')
+    label First Name: 
+      |
+      input(type='text' class="textbox" name='firstName')
+    br
+    label Last Name: 
+      |
+      input(type='text' class="textbox" name='lastName') 
+    br
+    label Email Address: 
+      |
+      input(type='text' class="textbox" name='email') 
+    br
+    |
+    button(type='submit' class="submit") Create Todo
+    | 
+    a(href='/contacts') Cancel
