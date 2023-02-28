@@ -8,9 +8,10 @@ const loadData = () => {
     const jsonData = fs.readFileSync(path.join(__dirname, '../data/contacts.json'));
     const contactsArray = JSON.parse(jsonData);
     contactsArray.forEach(element => {
-        const aContact = new Contact(element[1].id, element[1].text);
+        const aContact = new Contact(element[1].id, element[1].firstName, element[1].lastName, element[1].email);
         db.set(aContact.id, aContact);
     });
+    console.log(db);
 };
 
 const saveData = () => {
@@ -21,7 +22,7 @@ const saveData = () => {
 const repo = {
     findAll: () => Array.from(db.values()),
     findById: (uuid) => db.get(uuid),
-    create: (contact1, contact2, contact3) => {
+    create: (contact) => {
         contact.id = crypto.randomUUID();
         db.set(contact.id, contact);
         saveData();

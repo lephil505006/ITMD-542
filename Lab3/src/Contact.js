@@ -1,7 +1,9 @@
 class Contact {
-    constructor(id, text) {
+    constructor(id, firstName, lastName, email) {
         this.id = id;
-        this.text = text;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
     }
 }
 

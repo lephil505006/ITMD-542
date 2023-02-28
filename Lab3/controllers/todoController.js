@@ -24,7 +24,7 @@ exports.contacts_create_post = async function (req, res, next) {
         res.render('contacts_add', { title: 'Add a contacts', msg: 'Email Address text can not be empty!' })
     }
     else {
-        const newContact = new TransformStreamDefaultController('', req.body.firstName.trim(), req.body.lastName.trim(), req.body.email.trim());
+        const newContact = new Contact('', req.body.firstName, req.body.lastName, req.body.email);
         contactsRepo.create(newContact);
         res.redirect('/contacts');
     }
