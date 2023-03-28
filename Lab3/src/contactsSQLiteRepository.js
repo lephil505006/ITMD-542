@@ -24,7 +24,7 @@ const repo = {
         return new Contact(row.id, row.firstName, row.lastName, row.email);
     },
     create: (contact) => {
-        const stmt = db.prepare("INSERT INTO contacts (firstName, lastName, email) VALUES (?)");
+        const stmt = db.prepare("INSERT INTO contacts (firstName, lastName, email) VALUES (?,?,?)");
         const info = stmt.run(contact.firstName, contact.lastName, contact.email);
         console.log(`Contact created with id: ${info.lastInsertRowid}`);
     },
@@ -34,7 +34,7 @@ const repo = {
         console.log(`rows affected: ${info.changes}`);
     },
     update: (contact) => {
-        const stmt = db.prepare("UPDATE contacts SET (firstName, lastName, email) = ? WHERE id = ?");
+        const stmt = db.prepare("UPDATE contacts SET firstName = ?, lastName = ?, email = ? WHERE id = ?");
         const info = stmt.run(contact.firstName, contact.lastName, contact.email, contact.id);
         console.log(`rows affected: ${info.changes}`);
     },

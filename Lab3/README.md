@@ -15,4 +15,4 @@ Development Environment: Windows 10, Node JS v18.14.0, Visual Studio Code
 5. Once it runs successfully, you will go on your web browser and type in "localhost:3000" in the url.
 6. If all checks out, the app should run successfully!
 
-****NOTE FOR ERROR: Currently, this isn't able to run die to an TypeError.
+****NOTE FOR ERROR: Currently, this isn't able to run due to an TypeError.

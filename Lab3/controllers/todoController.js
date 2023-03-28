@@ -39,7 +39,7 @@ exports.contacts_detail = async function (req, res, next) {
     else {
         res.redirect('/contacts');
     }
-    res.render('contact', { title: 'Single Contact' });
+    //res.render('contact', { title: 'Single Contact' });
 };
 
 /* GET delete contact form */
