@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= 'Contact Info'
+  .infoGroup
+    p= contact.firstName 
+    p= contact.lastName 
+    p= contact.email 
+  .contact-actions
+    .edit-actions
+      a(href='/contacts') Show all Todos 
+      |
+      a(href=`/contacts/${contact.id}/delete`) Delete Todo 
+      |
+      a(href=`/contacts/${contact.id}/edit`) Edit Todo 

@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  h1= title
+  p Use this to edit this form
+  hr
+  if msg 
+    p(class='redtext')= msg
+  form(method='POST', action=`/contacts/${contact.id}/edit`)
+    label First Name: 
+      |
+      input(type='text', name='contactFirst', class="textbox", value=contact.firstName) 
+    br
+    label Last Name: 
+      |
+      input(type='text', name='contactLast', class="textbox", value=contact.lastName) 
+    br
+    label Email Address: 
+      |
+      input(type='text', name='contactEmail', class="textbox", value=contact.email) 
+    br
+    button(type='submit' class="submit") Save Changes
+    | 
+    a(href='/contacts') Cancel
