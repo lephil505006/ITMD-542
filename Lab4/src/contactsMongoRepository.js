@@ -1,9 +1,8 @@
-//const path = require('path');
-//const betterSqlite3 = require('better-sqlite3');
+
 const { MongoClient, ObjectId } = require('mongodb');
 const Contact = require('./Contact');
 
-const url = 'mongodb+srv://lephil505006:d83vN9sMM5Db6Mq4@contactlab4.dcmh1rh.mongodb.net/test';
+const url = process.env.MONGODB_URL;
 const client = new MongoClient(url);
 
 async function run() {
