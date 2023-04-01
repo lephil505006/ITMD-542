@@ -3,7 +3,7 @@ const Contact = require('../src/Contact');
 
 /* GET users listing. */
 exports.contacts_list = async function (req, res, next) {
-    const data = contactsRepo.findAll();
+    const data = await contactsRepo.findAll();
     res.render('contacts', { title: 'Contact Database', contacts: data });
 };
 
