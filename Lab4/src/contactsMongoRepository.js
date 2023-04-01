@@ -1,6 +1,6 @@
 //const path = require('path');
 //const betterSqlite3 = require('better-sqlite3');
-const { MongoClient } = require('mongodb');
+const { MongoClient, ObjectId } = require('mongodb');
 const Contact = require('./Contact');
 
 const url = 'mongodb+srv://lephil505006:d83vN9sMM5Db6Mq4@contactlab4.dcmh1rh.mongodb.net/test';
@@ -15,11 +15,6 @@ run()
     .then(console.log)
     .catch(console.error);
 
-//const db = new betterSqlite3(path.join(__dirname, '../data/contacts.sqlite'), { verbose: console.log });
-
-//const createStmt = db.prepare("CREATE TABLE IF NOT EXISTS contacts (id INTEGER PRIMARY KEY AUTOINCREMENT, firstName TEXT, lastName TEXT, email TEXT)");
-//createStmt.run();
-
 const repo = {
     findAll: async () => {
         let contacts = [];
@@ -31,25 +26,46 @@ const repo = {
         });
         return contacts;
     },
-    findById: (uuid) => {
-        // const stmt = db.prepare("SELECT * FROM contacts WHERE id = ?");
-        // const row = stmt.get(uuid);
-        // return new Contact(row.id, row.firstName, row.lastName, row.email);
+    findById: async (uuid) => {
+        const contactsColl = client.db('lab4-contacts').collection('Lab4');
+        const filter = {
+            '_id': new ObjectId(uuid)
+        };
+        const doc = await contactsColl.findOne(filter);
+        return new Contact(doc._id.toString(), doc.firstName, doc.lastName, doc.email);
     },
-    create: (contact) => {
-        // const stmt = db.prepare("INSERT INTO contacts (firstName, lastName, email) VALUES (?,?,?)");
-        // const info = stmt.run(contact.firstName, contact.lastName, contact.email);
-        // console.log(`Contact created with id: ${info.lastInsertRowid}`);
+    create: async (contact) => {
+        const doc = { firstName: contact.firstName, lastName: contact.lastName, email: contact.email };
+        const contactsColl = client.db('lab4-contacts').collection('Lab4');
+        const result = await contactsColl.insertOne(doc);
+        console.log(`A document was inserted with the _id: ${result.insertedId}`);
+
     },
-    deleteById: (uuid) => {
-        // const stmt = db.prepare("DELETE FROM contacts WHERE id = ?");
-        // const info = stmt.run(uuid);
-        // console.log(`rows affected: ${info.changes}`);
+    deleteById: async (uuid) => {
+        const contactsColl = client.db('lab4-contacts').collection('Lab4');
+        const filter = {
+            '_id': new ObjectId(uuid)
+        };
+        const result = await contactsColl.deleteOne(filter);
+        if (result.deletedCount === 1) {
+            console.log("Successfully deleted a document.");
+        }
+        else {
+            console.log("No documents matched, deleted 0 documents");
+        }
     },
-    update: (contact) => {
-        // const stmt = db.prepare("UPDATE contacts SET firstName = ?, lastName = ?, email = ? WHERE id = ?");
-        // const info = stmt.run(contact.firstName, contact.lastName, contact.email, contact.id);
-        // console.log(`rows affected: ${info.changes}`);
+    update: async (contact) => {
+        const contactsColl = client.db('lab4-contacts').collection('Lab4');
+        const filter = {
+            '_id': new ObjectId(contact.id)
+        };
+        const updateDoc = {
+            $set: {
+                firstName: contact.firstName, lastName: contact.lastName, email: contact.email
+            }
+        };
+        const result = await contactsColl.updateOne(filter, updateDoc);
+        console.log(`${result.matchedCount} docs matched the filter, updated ${result.modifiedCount} document(s)`);
     },
 };
 

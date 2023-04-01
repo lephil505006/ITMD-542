@@ -25,14 +25,14 @@ exports.contacts_create_post = async function (req, res, next) {
     }
     else {
         const newContact = new Contact('', req.body.firstName, req.body.lastName, req.body.email);
-        contactsRepo.create(newContact);
+        await contactsRepo.create(newContact);
         res.redirect('/contacts');
     }
 };
 
 /* GET single contact form */
 exports.contacts_detail = async function (req, res, next) {
-    const contact = contactsRepo.findById(req.params.uuid);
+    const contact = await contactsRepo.findById(req.params.uuid);
     if (contact) {
         res.render('contact', { title: 'Your Todo', contact: contact })
     }
@@ -44,31 +44,31 @@ exports.contacts_detail = async function (req, res, next) {
 
 /* GET delete contact form */
 exports.contacts_delete_get = async function (req, res, next) {
-    const contact = contactsRepo.findById(req.params.uuid);
+    const contact = await contactsRepo.findById(req.params.uuid);
     res.render('contacts_delete', { title: 'Delete contacts', contact: contact });
 };
 
 /* POST delete contact form  */
-exports.contacts_delete_post = function (req, res, next) {
-    contactsRepo.deleteById(req.params.uuid);
+exports.contacts_delete_post = async function (req, res, next) {
+    await contactsRepo.deleteById(req.params.uuid);
     res.redirect('/contacts');
 };
 
 /* GET edit contact form */
-exports.contacts_edit_get = function (req, res, next) {
-    const contact = contactsRepo.findById(req.params.uuid);
+exports.contacts_edit_get = async function (req, res, next) {
+    const contact = await contactsRepo.findById(req.params.uuid);
     res.render('contacts_edit', { title: 'Edit contacts', contact: contact });
 };
 
 /* POST edit contact form */
-exports.contacts_edit_post = function (req, res, next) {
+exports.contacts_edit_post = async function (req, res, next) {
     if (req.body.contactFirst.trim() === '') {
-        const contact = contactsRepo.findById(req.params.uuid);
+        const contact = await contactsRepo.findById(req.params.uuid);
         res.render('contacts_edit', { title: 'Edit Todo', msg: 'Todo text can not be empty!', contact: contact })
     }
     else {
         const updatedContact = new Contact(req.params.uuid, req.body.contactFirst.trim(), req.body.contactLast.trim(), req.body.contactEmail.trim());
-        contactsRepo.update(updatedContact);
+        await contactsRepo.update(updatedContact);
         res.redirect(`/contacts/${req.params.uuid}`);
     }
 };
