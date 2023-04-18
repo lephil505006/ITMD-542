@@ -1,0 +1,1 @@
+npm independicies: npm i, npm i nodemon
