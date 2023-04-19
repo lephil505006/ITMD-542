@@ -12,6 +12,6 @@ block content
         each val in recipes 
           a(href=`/recipes/${val.id}`)
             li(data-recipesid=val.id)
-              p= 'First Name: ' + val.firstName
-              p= 'Last Name: ' + val.lastName 
-              p= 'Email Address: ' + val.email
+              p= 'First Name: ' + val.dishName
+              p= 'Last Name: ' + val.occasion 
+              p= 'Email Address: ' + val.instruction

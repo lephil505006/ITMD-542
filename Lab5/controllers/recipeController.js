@@ -24,8 +24,8 @@ exports.recipes_create_post = async function (req, res, next) {
         res.render('recipes_add', { title: 'Add a recipes', msg: 'Instruction text can not be empty!' })
     }
     else {
-        const newrecipe = new recipe('', req.body.firstName, req.body.lastName, req.body.email);
-        await recipesRepo.create(newrecipe);
+        const newRecipe = new recipe('', req.body.firstName, req.body.lastName, req.body.email);
+        await recipesRepo.create(newRecipe);
         res.redirect('/recipes');
     }
 };
@@ -67,8 +67,8 @@ exports.recipes_edit_post = async function (req, res, next) {
         res.render('recipes_edit', { title: 'Edit Todo', msg: 'Todo text can not be empty!', recipe: recipe })
     }
     else {
-        const updatedrecipe = new recipe(req.params.uuid, req.body.recipeFirst.trim(), req.body.recipeLast.trim(), req.body.recipeEmail.trim());
-        await recipesRepo.update(updatedrecipe);
+        const updatedRecipe = new recipe(req.params.uuid, req.body.recipeFirst.trim(), req.body.recipeLast.trim(), req.body.recipeEmail.trim());
+        await recipesRepo.update(updatedRecipe);
         res.redirect(`/recipes/${req.params.uuid}`);
     }
 };

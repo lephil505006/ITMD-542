@@ -1,1 +1,1 @@
-npm independicies: npm i, npm i nodemon
+npm independicies: npm i, npm i nodemon, npm i mongodb
