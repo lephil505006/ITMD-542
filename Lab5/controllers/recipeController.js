@@ -1,5 +1,5 @@
 const recipesRepo = require('../src/recipesMongoRepository');
-const recipe = require('../src/recipe');
+const recipe = require('../src/Recipe');
 
 /* GET users listing. */
 exports.recipes_list = async function (req, res, next) {
@@ -15,13 +15,13 @@ exports.recipes_create_get = async function (req, res, next) {
 /* POST create recipe form */
 exports.recipes_create_post = async function (req, res, next) {
     if (req.body.firstName.trim() === '') {
-        res.render('recipes_add', { title: 'Add a recipes', msg: 'First Name text can not be empty!' })
+        res.render('recipes_add', { title: 'Add a recipes', msg: 'Dish Name text can not be empty!' })
     }
     else if (req.body.lastName.trim() === '') {
-        res.render('recipes_add', { title: 'Add a recipes', msg: 'Last Name text can not be empty!' })
+        res.render('recipes_add', { title: 'Add a recipes', msg: 'Occasion field can not be empty!' })
     }
     else if (req.body.email.trim() === '') {
-        res.render('recipes_add', { title: 'Add a recipes', msg: 'Email Address text can not be empty!' })
+        res.render('recipes_add', { title: 'Add a recipes', msg: 'Instruction text can not be empty!' })
     }
     else {
         const newrecipe = new recipe('', req.body.firstName, req.body.lastName, req.body.email);

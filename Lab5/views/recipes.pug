@@ -3,15 +3,15 @@ extends layout
 block content
   h1= title
   p Welcome to #{title}
-.edit-actions
-    a(href='/contacts/add') Add a Contact
+  .edit-actions
+    a(href='/recipes/add') Add a Recipe
   hr
-  if contacts.length > 0
-    #contacts-wrapper 
-      ul.contacts-list 
-        each val in contacts 
-          a(href=`/contacts/${val.id}`)
-            li(data-contactsid=val.id)
+  if recipes.length > 0
+    #recipes-wrapper 
+      ul.recipes-list 
+        each val in recipes 
+          a(href=`/recipes/${val.id}`)
+            li(data-recipesid=val.id)
               p= 'First Name: ' + val.firstName
               p= 'Last Name: ' + val.lastName 
               p= 'Email Address: ' + val.email
