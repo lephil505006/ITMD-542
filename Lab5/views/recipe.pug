@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1= recipe.dishName
+  .infoGroup
+    p= recipe.dishName
+    p= recipe.occasion
+    p= recipe.instruction 
+  .recipe-actions
+    .edit-actions
+      a(href='/recipes') Show all recipes
+      |
+      a(href=`/recipes/${recipe.id}/delete`) Delete recipe
+      |
+      a(href=`/recipes/${recipe.id}/edit`) Edit recipe

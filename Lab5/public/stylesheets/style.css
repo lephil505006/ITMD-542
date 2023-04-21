@@ -6,3 +6,11 @@ body {
 a {
   color: #00B7FF;
 }
+
+th {
+  text-align: left;
+}
+
+.viewButton {
+  font-size: 16px;
+}

@@ -1,0 +1,33 @@
+extends layout
+
+block content
+  h1= title
+  p Use this to add a form
+  hr
+  if msg 
+    p(class='redtext')= msg
+  form(method='POST', action='/recipes/add')
+    label Dish Name: 
+      |
+      input(type='text' class="textbox" name='dishName')
+    br
+    label The Occasion: 
+      |
+      input(type='text' class="textbox" name='occasion')
+      br
+    label Servings: 
+      |
+      input(type='text' class="textbox" name='serving')  
+      br
+    label Description 
+      |
+      input(type='text' class="textbox" name='description') 
+    br
+    label Instructions and Ingredients: 
+      |
+      input(type='text' class="textbox" name='instruction') 
+    br
+    |
+    button(type='submit' class="submit") Create Todo
+    | 
+    a(href='/recipes') Cancel

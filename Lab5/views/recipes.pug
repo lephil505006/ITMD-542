@@ -1,0 +1,25 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to the #{title}
+  .edit-actions
+    a(href='/recipes/add') Add a recipe
+  hr
+  if recipes.length > 0
+    #recipes-wrapper 
+      ul.recipes-list 
+        table(style='width:70%', border='1')
+          tr
+            th= ''
+            th= 'Recipe Name'
+            th= 'Recipe Name'
+            th= 'Recipe Name'
+          each val in recipes 
+            tr
+              td 
+                a(class='viewButton' href=`/recipes/${val.id}`) View Recipe
+              td= val.dishName
+              td= val.occasion
+              td= val.instruction
+
