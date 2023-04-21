@@ -1,8 +1,3 @@
-const crypto = require('crypto');
-const fs = require('fs');
-const path = require('path');
-const db = new Map();
-
 const { MongoClient, ObjectId } = require('mongodb');
 const Recipe = require('./Recipe');
 
@@ -14,44 +9,62 @@ async function run() {
     return 'Connected to the MongoDB server...'
 }
 
-const loadData = () => {
-    const jsonData = fs.readFileSync(path.join(__dirname, '../data/recipes.json'));
-    const recipesArray = JSON.parse(jsonData);
-    recipesArray.forEach(element => {
-        db.set(element[0], element[1]);
-    });
-};
-
-const saveData = () => {
-    const stringifyData = JSON.stringify(Array.from(db));
-    fs.writeFileSync(path.join(__dirname, '../data/recipes.json'), stringifyData);
-};
+run()
+    .then(console.log)
+    .catch(console.error);
 
 const repo = {
-    findAll: () => Array.from(db.values()),
-    findById: (uuid) => db.get(uuid),
-    create: (recipe1, recipe2, recipe3, recipe4, recipe5) => {
-        const newRecipe = {
-            id: crypto.randomUUID(),
-            dishName: recipe1.text,
-            occasion: recipe2.text,
-            serving: recipe3.text,
-            description: recipe4.text,
-            instruction: recipe5.text,
+    findAll: async () => {
+        let recipes = [];
+        const recipesColl = client.db('recipeDatabase').collection('recipes');
+        const cursor = recipesColl.find({});
+        await cursor.forEach(doc => {
+            const aRecipe = new Recipe(doc._id.toString(), doc.dishName, doc.occasion, doc.serving, doc.description, doc.instruction);
+            recipes.push(aRecipe);
+        });
+        return recipes;
+    },
+    findById: async (uuid) => {
+        const recipesColl = client.db('recipeDatabase').collection('recipes');
+        const filter = {
+            '_id': new ObjectId(uuid)
         };
-        db.set(newRecipe.id, newRecipe);
-        saveData();
+        const doc = await recipesColl.findOne(filter);
+        return new Recipe(doc._id.toString(), doc.dishName, doc.occasion, doc.serving, doc.description, doc.instruction);
     },
-    deleteById: (uuid) => {
-        db.delete(uuid);
-        saveData();
+    create: async (recipe) => {
+        const doc = { dishName: recipe.dishName, occasion: recipe.occasion, serving: recipe.serving, description: recipe.description, instruction: recipe.instruction };
+        const recipesColl = client.db('recipeDatabase').collection('recipes');
+        const result = await recipesColl.insertOne(doc);
+        console.log(`A document was inserted with the _id: ${result.insertedId}`);
+
     },
-    update: (recipe) => {
-        db.set(recipe.id, recipe);
-        saveData();
+    deleteById: async (uuid) => {
+        const recipesColl = client.db('recipeDatabase').collection('recipes');
+        const filter = {
+            '_id': new ObjectId(uuid)
+        };
+        const result = await recipesColl.deleteOne(filter);
+        if (result.deletedCount === 1) {
+            console.log("Successfully deleted a document.");
+        }
+        else {
+            console.log("No documents matched, deleted 0 documents");
+        }
+    },
+    update: async (recipe) => {
+        const recipesColl = client.db('recipeDatabase').collection('recipes');
+        const filter = {
+            '_id': new ObjectId(recipe.id)
+        };
+        const updateDoc = {
+            $set: {
+                dishName: recipe.dishName, occasion: recipe.occasion, serving: recipe.serving, description: recipe.description, instruction: recipe.instruction
+            }
+        };
+        const result = await recipesColl.updateOne(filter, updateDoc);
+        console.log(`${result.matchedCount} docs matched the filter, updated ${result.modifiedCount} document(s)`);
     },
 };
-
-loadData();
 
 module.exports = repo;

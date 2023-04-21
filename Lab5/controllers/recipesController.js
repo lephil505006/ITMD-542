@@ -24,7 +24,8 @@ exports.recipes_create_post = async function (req, res, next) {
         res.render('recipes_add', { title: 'Add a recipes', msg: 'Instruction text can not be empty!' })
     }
     else {
-        recipesRepo.create({ text: req.body.dishName.trim() }, { text: req.body.occasion.trim() }, { text: req.body.serving.trim() }, { text: req.body.description.trim() }, { text: req.body.instruction.trim() });
+        const newRecipe = new Recipe('', req.body.dishName, req.body.occasion, req.body.serving, req.body.description, req.body.instruction);
+        await recipesRepo.create(newRecipe);
         res.redirect('/recipes');
     }
 };
