@@ -25,7 +25,7 @@ router.post('/add', function (req, res, next) {
         res.render('recipes_add', { title: 'Add a recipes', msg: 'Instruction text can not be empty!' })
     }
     else {
-        recipesRepo.create({ text: req.body.dishName.trim() }, { text: req.body.occasion.trim() }, { text: req.body.instruction.trim() });
+        recipesRepo.create({ text: req.body.dishName.trim() }, { text: req.body.occasion.trim() }, { text: req.body.serving.trim() }, { text: req.body.description.trim() }, { text: req.body.instruction.trim() });
         res.redirect('/recipes');
     }
 });
@@ -62,12 +62,12 @@ router.get('/:uuid/edit', function (req, res, next) {
 
 /* POST edit recipe form */
 router.post('/:uuid/edit', function (req, res, next) {
-    if (req.body.recipeFirst.trim() === '') {
+    if (req.body.recipeDish.trim() === '') {
         const recipe = recipesRepo.findById(req.params.uuid);
         res.render('recipes_edit', { title: 'Edit Todo', msg: 'Todo text can not be empty!', recipe: recipe })
     }
     else {
-        const updatedRecipe = { id: req.params.uuid, firstName: req.body.recipeFirst.trim(), lastName: req.body.recipeLast.trim(), email: req.body.recipeEmail.trim() };
+        const updatedRecipe = { id: req.params.uuid, dishName: req.body.recipeDish.trim(), occasion: req.body.recipeOccasion.trim(), serving: req.body.recipeServing.trim(), description: req.body.recipeDescription.trim(), instruction: req.body.recipeInstruction.trim() };
         recipesRepo.update(updatedRecipe);
         res.redirect(`/recipes/${req.params.uuid}`);
     }

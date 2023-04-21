@@ -19,13 +19,14 @@ const saveData = () => {
 const repo = {
     findAll: () => Array.from(db.values()),
     findById: (uuid) => db.get(uuid),
-    create: (recipe1, recipe2, recipe3) => {
-        //(code for time but editing caused errors) const date = fs.statSync(path.join(__dirname, '../data/recipes.json'));
+    create: (recipe1, recipe2, recipe3, recipe4, recipe5) => {
         const newRecipe = {
             id: crypto.randomUUID(),
             dishName: recipe1.text,
             occasion: recipe2.text,
-            instruction: recipe3.text,
+            serving: recipe3.text,
+            description: recipe4.text,
+            instruction: recipe5.text,
         };
         db.set(newRecipe.id, newRecipe);
         saveData();

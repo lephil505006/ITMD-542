@@ -12,14 +12,14 @@ block content
         table(style='width:70%', border='1')
           tr
             th= ''
-            th= 'Recipe Name'
-            th= 'Recipe Name'
-            th= 'Recipe Name'
+            th= 'Dish Name'
+            th= 'Servings'
+            th= 'The Occasion'
           each val in recipes 
             tr
               td 
                 a(class='viewButton' href=`/recipes/${val.id}`) View Recipe
               td= val.dishName
+              td= val.serving
               td= val.occasion
-              td= val.instruction
 

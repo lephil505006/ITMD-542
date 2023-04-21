@@ -7,17 +7,25 @@ block content
   if msg 
     p(class='redtext')= msg
   form(method='POST', action=`/recipes/${recipe.id}/edit`)
-    label First Name: 
+    label Dish Name: 
       |
-      input(type='text', name='recipeFirst', class="textbox", value=recipe.dishName) 
+      input(type='text', name='recipeDish', class="textbox", value=recipe.dishName) 
     br
-    label Last Name: 
+    label The Occasion: 
       |
-      input(type='text', name='recipeLast', class="textbox", value=recipe.occasion) 
+      input(type='text', name='recipeOccasion', class="textbox", value=recipe.occasion) 
     br
-    label Email Address: 
+    label Servings: 
       |
-      input(type='text', name='recipeEmail', class="textbox", value=recipe.instruction) 
+      input(type='text', name='recipeServing', class="textbox", value=recipe.serving) 
+    br
+    label Description: 
+      |
+      input(type='text', name='recipeDescription', class="textbox", value=recipe.description) 
+    br
+    label Instruction and Ingredients: 
+      |
+      input(type='text', name='recipeInstruction', class="textbox", value=recipe.instruction) 
     br
     button(type='submit' class="submit") Save Changes
     | 

@@ -3,8 +3,9 @@ extends layout
 block content
   h1= recipe.dishName
   .infoGroup
-    p= recipe.dishName
     p= recipe.occasion
+    p= recipe.serving
+    p= recipe.description 
     p= recipe.instruction 
   .recipe-actions
     .edit-actions
