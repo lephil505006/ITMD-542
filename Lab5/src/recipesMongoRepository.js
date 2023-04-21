@@ -3,6 +3,17 @@ const fs = require('fs');
 const path = require('path');
 const db = new Map();
 
+const { MongoClient, ObjectId } = require('mongodb');
+const Recipe = require('./Recipe');
+
+const url = process.env.MONGODB_URL;
+const client = new MongoClient(url);
+
+async function run() {
+    await client.connect();
+    return 'Connected to the MongoDB server...'
+}
+
 const loadData = () => {
     const jsonData = fs.readFileSync(path.join(__dirname, '../data/recipes.json'));
     const recipesArray = JSON.parse(jsonData);
