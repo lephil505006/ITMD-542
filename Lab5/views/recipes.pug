@@ -19,6 +19,7 @@ block content
             tr
               td 
                 a(class='viewButton' href=`/recipes/${val.id}`) View Recipe
+                li(data-recipesid=val.id)
               td= val.dishName
               td= val.serving
               td= val.occasion

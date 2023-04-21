@@ -37,7 +37,6 @@ const repo = {
         const recipesColl = client.db('recipeDatabase').collection('recipes');
         const result = await recipesColl.insertOne(doc);
         console.log(`A document was inserted with the _id: ${result.insertedId}`);
-
     },
     deleteById: async (uuid) => {
         const recipesColl = client.db('recipeDatabase').collection('recipes');
