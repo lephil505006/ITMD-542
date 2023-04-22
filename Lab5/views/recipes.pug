@@ -9,6 +9,15 @@ block content
   if recipes.length > 0
     #recipes-wrapper 
       ul.recipes-list 
+        each val in recipes 
+          a(href=`/recipes/${val.id}`)
+            li(data-recipesid=val.id)
+              p= 'First Name: ' + val.dishName
+              p= 'Last Name: ' + val.occasion 
+              p= 'Email Address: ' + val.serving
+  if recipes.length > 0
+    #recipes-wrapper 
+      ul.recipes-list 
         table(style='width:70%', border='1')
           tr
             th= ''
@@ -19,8 +28,6 @@ block content
             tr
               td 
                 a(class='viewButton' href=`/recipes/${val.id}`) View Recipe
-                li(data-recipesid=val.id)
               td= val.dishName
               td= val.serving
               td= val.occasion
-

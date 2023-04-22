@@ -1,4 +1,3 @@
-
 const { MongoClient, ObjectId } = require('mongodb');
 const Contact = require('./Contact');
 
