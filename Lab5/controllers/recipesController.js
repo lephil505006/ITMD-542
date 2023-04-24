@@ -3,7 +3,7 @@ const Recipe = require('../src/Recipe');
 
 /* GET users listing. */
 exports.recipes_list = async function (req, res, next) {
-    const data = recipesRepo.findAll();
+    const data = await recipesRepo.findAll();
     res.render('recipes', { title: 'recipe Database', recipes: data });
 };
 
