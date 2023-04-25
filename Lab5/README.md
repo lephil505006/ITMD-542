@@ -1,1 +1,1 @@
-indepeneindinceies npm i npm i nodemon npm i mongodb npm i dotenv npm i passport-google-oidc npm i passport npm i express-session npm i connect-sqlite3
+indepeneindinceies npm i npm i nodemon npm i mongodb npm i dotenv npm i passport-google-oidc npm i passport npm i express-session npm i connect-sqlite3 npm i mongoose npm i bcryptjs

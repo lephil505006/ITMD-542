@@ -6,6 +6,17 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const passport = require('passport');
+const mongoose = require('mongoose');
+
+const url = process.env.MONGODB_URL;
+
+mongoose.connect(`mongodb+srv://${process.env.MONGODB_URL}@recipelist.dqvurrq.mongodb.net/auth`)
+  .then(() => {
+    console.log('Database connection successful.');
+  })
+  .catch((err) => {
+    console.log('Database connection error.');
+  });
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');

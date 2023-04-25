@@ -7,7 +7,6 @@ block content
     a(href='/recipes/add') Add a recipe
   hr
   if recipes.length > 0
-  p=''
     #recipes-wrapper 
       ul.recipes-list 
         table(style='width:70%', border='1')
@@ -17,10 +16,9 @@ block content
             th= 'Servings'
             th= 'The Occasion'
           each val in recipes 
-            p='test'
-              tr
-                td 
-                  a(class='viewButton' href=`/recipes/${val.id}`) View Recipe
-                td= val.dishName
-                td= val.serving
-                td= val.occasion
+            tr
+              td 
+                a(class='viewButton' href=`/recipes/${val.id}`) View Recipe
+              td= val.dishName
+              td= val.serving
+              td= val.occasion
