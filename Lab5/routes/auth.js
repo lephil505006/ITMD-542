@@ -2,8 +2,31 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const User = require('../models/User');
+const LocalStrategy = require('passport-local');
 const GoogleStrategy = require('passport-google-oidc');
 const FederatedCredentials = require('../models/FederatedCredentials');
+
+async function localAuthUser(email, password, done) {
+    try {
+        const aUser = await User.findOne({ email: email });
+        if (!aUser) {
+            return done(null, false);
+        }
+        const isMatch = await aUser.matchPassword(password);
+        if (!isMatch) {
+            return done(null, false);
+        }
+        return done(null, aUser);
+    } catch (error) {
+        console.log(error);
+        return done(error, false);
+    }
+}
+
+passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+}, localAuthUser));
 
 async function googleAuthUser(issuer, profile, done) {
     //return done(null, profile);
