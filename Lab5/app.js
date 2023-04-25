@@ -5,12 +5,13 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
+const User = require('./models/User');
 const passport = require('passport');
 const mongoose = require('mongoose');
 
 const url = process.env.MONGODB_URL;
 
-mongoose.connect(`mongodb+srv://${process.env.MONGODB_URL}@recipelist.dqvurrq.mongodb.net/auth`)
+mongoose.connect(`mongodb+srv://${process.env.MONGODB_USER}:${process.env.MONGODB_PASSWORD}@recipelist.dqvurrq.mongodb.net/auth`)
   .then(() => {
     console.log('Database connection successful.');
   })
