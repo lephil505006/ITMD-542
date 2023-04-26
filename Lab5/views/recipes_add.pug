@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  h1= title
+  h1= 'Add you recipe'
   p Use this to add a form
   hr
   if msg 
@@ -25,7 +25,7 @@ block content
     br
     label Instructions and Ingredients: 
       |
-      textarea(rows="5" name='instruction')
+      textarea(rows="10" placeholder="Enter the recipe instructions" name='instruction')
     br
     |
     button(type='submit' class="submit") Create Todo
