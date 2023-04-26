@@ -1,24 +1,49 @@
+/*For all*/
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px;
+  font-weight: 600;
+  font-family: 'Lexend Mega', sans-serif, 'Times New Roman', Times, serif;
 }
 
 a {
   color: #00B7FF;
+  text-decoration: none;
+}
+
+/*Table Viewing*/
+table {
+  margin-top: 50px;
+}
+
+.bodyBox {
+  border: 50px solid;
+}
+
+th,
+td {
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
 }
 
 th {
   text-align: left;
 }
 
+td {}
+
 .viewButton {
   font-size: 16px;
+  border: 1px;
 }
 
 .viewCell {
   width: 150px;
 }
 
-.table {
-  align-items: center;
+.table {}
+
+/*Single Page Viewing*/
+.edit-actions {
+  width: 100%;
 }
