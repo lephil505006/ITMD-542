@@ -23,9 +23,9 @@ block content
       |
       input(type='text', name='recipeDescription', class="textbox", value=recipe.description) 
     br
-    label Instruction and Ingredients: 
+    label Instructions and Ingredients: 
       |
-      input(type='text', name='recipeInstruction', class="textbox", value=recipe.instruction) 
+      textarea(rows="5" name='instruction', class="textarea", value=recipe.instruction)
     br
     button(type='submit' class="submit") Save Changes
     | 

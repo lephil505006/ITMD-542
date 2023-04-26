@@ -20,9 +20,6 @@ exports.recipes_create_post = async function (req, res, next) {
     else if (req.body.occasion.trim() === '') {
         res.render('recipes_add', { title: 'Add a recipes', msg: 'Occasion text can not be empty!' })
     }
-    else if (req.body.instruction.trim() === '') {
-        res.render('recipes_add', { title: 'Add a recipes', msg: 'Instruction text can not be empty!' })
-    }
     else {
         const newRecipe = new Recipe('', req.body.dishName, req.body.occasion, req.body.serving, req.body.description, req.body.instruction);
         await recipesRepo.create(newRecipe);
