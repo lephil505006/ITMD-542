@@ -45,5 +45,8 @@ td {}
 
 /*Single Page Viewing*/
 .edit-actions {
-  width: 100%;
+  width: 30%;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 50px;
 }

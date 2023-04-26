@@ -3,10 +3,10 @@ extends layout
 block content
   h1= recipe.dishName
   .infoGroup
-    p= recipe.occasion
-    p= recipe.serving
+    p= 'Occasion: ' + recipe.occasion
+    p= 'Serving(s): ' + recipe.serving
     p= recipe.description 
-    p= recipe.instruction 
+    p(class="instruction")= recipe.instruction 
   .recipe-actions
     .edit-actions
       a(href='/recipes') Show all recipes
