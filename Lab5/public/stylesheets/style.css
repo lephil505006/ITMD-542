@@ -4,7 +4,34 @@ body {
   font: 14px;
   font-weight: 600;
   font-family: 'Lexend Mega', sans-serif, 'Times New Roman', Times, serif;
+  background-color: #FFFBF1;
 }
+
+#banner {
+  background-color: #e9e0c9;
+  border-radius: 10px;
+  padding-top: 50px;
+  padding-bottom: 20px;
+  padding-left: 30px;
+}
+
+pre,
+.textbox {
+  font-family: 'Lexend Mega', sans-serif, 'Times New Roman', Times, serif;
+}
+
+.textbox {
+  height: 30px;
+}
+
+input[type=text] {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid #000000;
+  width: 300px;
+}
+
+label {}
 
 a {
   color: #00B7FF;
@@ -32,6 +59,8 @@ th {
 
 td {}
 
+
+
 .viewButton {
   font-size: 16px;
   border: 1px;
@@ -51,4 +80,59 @@ td {}
   margin-top: 50px;
 }
 
-.instruction {}
+.instruction {
+  width: 50%;
+  line-height: 1.5em;
+  border: solid 1px;
+  padding: 10px;
+}
+
+/*Add Page*/
+.textarea {
+  background-color: #dddddd;
+  color: #666666;
+  padding: 1em;
+  border-radius: 10px;
+  border: 2px solid transparent;
+  outline: none;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.4;
+  width: 200px;
+  height: 200px;
+  transition: all 0.2s;
+  margin-top: 15px;
+  font-weight: 600;
+  font-family: 'Lexend Mega', sans-serif, 'Times New Roman', Times, serif;
+  margin-bottom: 20px;
+}
+
+.textarea:hover {
+  cursor: pointer;
+  background-color: #eeeeee;
+}
+
+.textarea:focus {
+  cursor: text;
+  color: #333333;
+  background-color: white;
+  border-color: #333333;
+}
+
+.submit {
+  width: 180px;
+  height: 60px;
+  border: none;
+  outline: none;
+  background: #2f2f2f;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 40px;
+  text-align: center;
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  font-family: 'Lexend Mega', sans-serif, 'Times New Roman', Times, serif;
+  font-weight: 600;
+}

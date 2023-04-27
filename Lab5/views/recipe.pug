@@ -1,12 +1,13 @@
 extends layout
 
 block content
-  h1= recipe.dishName
+  #banner
+    h1= recipe.dishName
   .infoGroup
     p= 'Occasion: ' + recipe.occasion
     p= 'Serving(s): ' + recipe.serving
     p= recipe.description 
-    p(class="instruction")= recipe.instruction 
+    pre(class="instruction")= recipe.instruction 
   .recipe-actions
     .edit-actions
       a(href='/recipes') Show all recipes

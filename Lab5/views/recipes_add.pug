@@ -1,33 +1,31 @@
 extends layout
 
 block content
-  h1= 'Add you recipe'
-  p Use this to add a form
+  #banner
+    h1= 'Add you recipe'
   hr
   if msg 
     p(class='redtext')= msg
   form(method='POST', action='/recipes/add')
-    label Dish Name: 
-      |
+    label Dish Name:
+      br 
       input(type='text' class="textbox" name='dishName')
-    br
+      br
     label The Occasion: 
-      |
+      br
       input(type='text' class="textbox" name='occasion')
       br
     label Servings: 
-      |
+      br
       input(type='text' class="textbox" name='serving')  
       br
     label Description 
-      |
+      br
       input(type='text' class="textbox" name='description') 
-    br
-    label Instructions and Ingredients: 
-      |
-      textarea(rows="10" placeholder="Enter the recipe instructions" name='instruction')
+      br
+    textarea(rows="10" placeholder="Enter the recipe instructions" class="textarea" name='instruction')
     br
     |
-    button(type='submit' class="submit") Create Todo
+    button(type='submit' class="submit") Create Recipe
     | 
     a(href='/recipes') Cancel
