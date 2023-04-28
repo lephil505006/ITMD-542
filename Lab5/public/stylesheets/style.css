@@ -1,15 +1,14 @@
 /*For all*/
 body {
-  padding: 50px;
   font: 14px;
   font-weight: 600;
   font-family: 'Lexend Mega', sans-serif, 'Times New Roman', Times, serif;
   background-color: #FFFBF1;
+  margin: 0;
 }
 
 #banner {
   background-color: #e9e0c9;
-  border-radius: 10px;
   padding-top: 50px;
   padding-bottom: 20px;
   padding-left: 30px;
@@ -31,7 +30,10 @@ input[type=text] {
   width: 300px;
 }
 
-label {}
+form {
+  padding-left: 30px;
+  padding-top: 30px;
+}
 
 a {
   color: #00B7FF;
@@ -74,7 +76,7 @@ td {}
 
 /*Single Page Viewing*/
 .edit-actions {
-  width: 30%;
+  width: 40%;
   display: flex;
   justify-content: space-between;
   margin-top: 50px;
@@ -105,6 +107,7 @@ td {}
   font-weight: 600;
   font-family: 'Lexend Mega', sans-serif, 'Times New Roman', Times, serif;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .textarea:hover {

@@ -10,8 +10,8 @@ block content
     pre(class="instruction")= recipe.instruction 
   .recipe-actions
     .edit-actions
-      a(href='/recipes') Show all recipes
+      a(class="submit" href='/recipes') Show all recipes
       |
-      a(href=`/recipes/${recipe.id}/delete`) Delete recipe
+      a(class="submit" href=`/recipes/${recipe.id}/delete`) Delete recipe
       |
-      a(href=`/recipes/${recipe.id}/edit`) Edit recipe
+      a(class="submit" href=`/recipes/${recipe.id}/edit`) Edit recipe
