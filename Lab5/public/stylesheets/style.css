@@ -5,10 +5,11 @@ body {
   font-family: 'Lexend Mega', sans-serif, 'Times New Roman', Times, serif;
   background-color: #FFFBF1;
   margin: 0;
+  padding-bottom: 50px;
 }
 
 #banner {
-  background-color: #e9e0c9;
+  background-color: #e9dcbd;
   padding-top: 50px;
   padding-bottom: 20px;
   padding-left: 30px;
@@ -82,11 +83,36 @@ td {}
   margin-top: 50px;
 }
 
+.infoGroup {
+  margin-left: 15px;
+}
+
 .instruction {
   width: 50%;
   line-height: 1.5em;
   border: solid 1px;
   padding: 10px;
+}
+
+.recipe-actions {
+  margin-left: 15px;
+}
+
+.option {
+  width: 200px;
+  height: 60px;
+  border: none;
+  outline: none;
+  background: #2f2f2f;
+  color: #fff;
+  font-size: 16px;
+  border-radius: 40px;
+  text-align: center;
+  box-shadow: 0 6px 20px -5px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  cursor: pointer;
+  font-family: 'Lexend Mega', sans-serif, 'Times New Roman', Times, serif;
+  font-weight: 600;
 }
 
 /*Add Page*/
