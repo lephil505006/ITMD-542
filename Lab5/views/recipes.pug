@@ -5,12 +5,12 @@ block content
     h1= 'The Recipe Database'
     p Welcome to the Recipe Database, please enter any sort of recipe in mind!
     .edit-actions
-  a(href='/recipes/add') Add a recipe
   hr
+  a(class='option' href='/recipes/add') Add a recipe
   if recipes.length > 0
     #recipes-wrapper 
       ul.recipes-list 
-        table(class='table', style='width:50%')
+        table(class='table', style='width:65%')
           tr
             th= ''
             th= 'Dish Name'
@@ -19,7 +19,7 @@ block content
           each val in recipes 
             tr(class='bodyBox')
               td(class='viewCell')
-                a(class='viewButton' href=`/recipes/${val.id}`) View Recipe
+                a(class='option' href=`/recipes/${val.id}`) View Recipe
               td= val.dishName
               td= val.serving
               td= val.occasion

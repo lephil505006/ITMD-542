@@ -15,6 +15,10 @@ body {
   padding-left: 30px;
 }
 
+hr {
+  margin-bottom: 30px;
+}
+
 pre,
 .textbox {
   font-family: 'Lexend Mega', sans-serif, 'Times New Roman', Times, serif;
@@ -71,6 +75,7 @@ td {}
 
 .viewCell {
   width: 150px;
+  height: 50px;
 }
 
 .table {}
@@ -113,6 +118,7 @@ td {}
   cursor: pointer;
   font-family: 'Lexend Mega', sans-serif, 'Times New Roman', Times, serif;
   font-weight: 600;
+  padding: 9px;
 }
 
 /*Add Page*/
@@ -164,4 +170,9 @@ td {}
   cursor: pointer;
   font-family: 'Lexend Mega', sans-serif, 'Times New Roman', Times, serif;
   font-weight: 600;
+}
+
+/*All Recipes Page*/
+#recipes-wrapper {
+  margin-left: 50px;
 }
